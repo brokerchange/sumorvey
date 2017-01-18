@@ -8,7 +8,7 @@ class Question(models.Model):
 
     def answers(self):
         answer_count = 0
-        for answer in Answer.objects.filter(question=self.pk):
+        for answer in Answer.objects.filter(parent=self.pk):
             answer_count += answer.votes
         return answer_count
 
