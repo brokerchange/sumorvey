@@ -3,8 +3,9 @@
 {% block content %}
     <div class="question">
         <h1><a href="">{{ question.text }}</a></h1>
-        {% for answer in answers %}
-            <h2>{{ answer.text }}: {{ answer.votes }}</h2>
-        {% endfor %}
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ form }}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
     </div>
 {% endblock %}
