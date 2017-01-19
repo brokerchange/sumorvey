@@ -1,0 +1,10 @@
+{% extends 'survey/base.html' %}
+
+{% block content %}
+    <div class="question">
+        <h1><a href="">{{ question.text }}</a></h1>
+        {% for answer in answers %}
+            <h2>{{ answer.text }}: {{ answer.votes }}</h2>
+        {% endfor %}
+    </div>
+{% endblock %}
