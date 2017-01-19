@@ -1,23 +1,35 @@
 {% load staticfiles %}
+{% load bootstrap_themes %}
+
 <html>
     <head>
         <title>Sumorvey says...</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="{% static 'css/survey.css' %}">
-        <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+        {% bootstrap_styles theme='flatly' type='min.css' %}
+        {% bootstrap_script use_min=True %}
     </head>
-<body>
-    <div class="page-header">
-        <h1><a href="/">Su(mo)rvey</a></h1>
-    </div>
-    <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Su(mo)urvey</a>
+                </div>
+            <div>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        <li><a href="/questions/">Results</a></li>
+                        <li><a href="/purge-session/">Purge Session</a></li>
+                        <li><a href="/purge-results/">Purge Results</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

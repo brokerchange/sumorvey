@@ -3,12 +3,14 @@
 {% block content %}
     {% for question in questions %}
         <div class="question">
-            <h1><a href="">{{ question.text }}</a></h1>
+            <table class="table table-striped table-hover ">
+            <tr><th><a href="/question/{{ question.pk }}/">{{ question.text }}</a></th><th>{{ question.answers }} answers</th></tr>
             {% for answer in answers %}
                 {% if answer.parent.pk == question.pk %}
-                    <h2>{{ answer.text }}: {{ answer.votes }}</h2>
+                    <tr><td>{{ answer.text }}</td><td>{{ answer.votes }} votes</td></tr>
                 {% endif %}                                
             {% endfor %}
+            </table>
         </div>
     {% endfor %}
 {% endblock %}
