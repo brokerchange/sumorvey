@@ -6,6 +6,7 @@
         <title>Sumorvey says...</title>
         {% bootstrap_styles theme='flatly' type='min.css' %}
         {% bootstrap_script use_min=True %}
+        <link rel="stylesheet" href="{% static 'css/survey.css' %}">
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -16,20 +17,18 @@
             <div>
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
-                        <li><a href="/questions/">Results</a></li>
+                        <li><a href="/results/">Results</a></li>
                         <li><a href="/purge-session/">Purge Session</a></li>
                         <li><a href="/purge-results/">Purge Results</a></li>
                     {% endif %}
                 </ul>
             </div>
         </nav>
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-            </div>
+        <div class="container body-content">
+            
+                {% block content %}
+                {% endblock %}
+            
         </div>
     </body>
 </html>

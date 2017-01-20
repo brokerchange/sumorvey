@@ -1,16 +1,18 @@
 {% extends 'survey/base.html' %}
 
 {% block content %}
+    <table class="table table-striped table-hover">
     {% for question in questions %}
-        <div class="question">
-            <table class="table table-striped table-hover ">
-            <tr><th><a href="/question/{{ question.pk }}/">{{ question.text }}</a></th><th>{{ question.answers }} answers</th></tr>
-            {% for answer in answers %}
-                {% if answer.parent.pk == question.pk %}
-                    <tr><td>{{ answer.text }}</td><td>{{ answer.votes }} votes</td></tr>
-                {% endif %}                                
-            {% endfor %}
-            </table>
-        </div>
+        <tr>
+            <th><a href="/question/{{ question.pk }}/">{{ question.text }}</a></th>
+            <th> Total responses: {{ question.answers }} </th>
+        </tr>
+        {% for answer in answers %}
+            {% if answer.parent.pk == question.pk %}
+                <tr><td>{{ answer.text }}</td><td>{{ answer.votes }}</td></tr>
+            {% endif %} 
+        {% endfor %}
+        <tr><td colspan=2>&nbsp;</td></tr>
     {% endfor %}
+    </table>
 {% endblock %}

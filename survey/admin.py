@@ -11,8 +11,8 @@ class QuestionAdmin(admin.ModelAdmin):
     def possible_answers(self, obj):
         ans = ""
         for answer in Answer.objects.filter(parent=obj.pk):
-            ans += " " + answer.text
-        return ans
+            ans += " " + answer.text + ","
+        return ans.strip(",")
 
 
 
