@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, get_list_or_404, redirec
 from .models import Question, Answer
 from random import randrange
 from .forms import RandomForm
-from sys import stderr
 
 
 def question_list(request):
@@ -64,8 +63,7 @@ def question_random(request):
             request.session['answered'] = [answer.parent.pk]
             request.session.modified = True
         return redirect('question_random')
-    return render(request, 'survey/question_random.html',
-        {'question': question, 'question_num': question_num,'form': form, 'session': request.session })
+    return render(request, 'survey/question_random.html', {'question': question, 'form': form})
 
 
 def question_detail(request, pk):
