@@ -51,5 +51,42 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-http://127.0.0.1:8000
+Launch the app at http://127.0.0.1:8000
+
+1. Answer questions. 
+2. ???
+3. Profit!
+
+## Admin
+
+Login to http://127.0.0.1:8000/admin/ with the superuser credentials you created
+
+### Add questions
+
+On the admin dashboard, click Add.
+
+(Optional) Choose a prerequisite answer. If a prereq is selected, this quesiton will only be shown to users who have selected that answer.
+
+Enter the question in the Text field.
+
+Enter answers in the Text fields below. Add more fields as needed.
+
+## Admin use of the app
+
+After logging in to admin panel, visits to the app will have a navbar in the header.
+
+### Results
+
+Clicking results will show a table of all questions and answers with vote totals. Click a question name to see more info!
+
+### Purge Session
+
+Sumorvey uses sessions to track questions answered (to avoid repeats) and answers selected (to qualify users for questions containing a prerequisite). Click this link to reset the session.
+
+### Purge Results
+
+Click this link to clear all votes in the database.
+
+
+
 
