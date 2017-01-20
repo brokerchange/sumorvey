@@ -16,7 +16,7 @@
                 </div>
             <div>
                 <ul class="nav navbar-nav navbar-right">
-                    {% if user.is_authenticated %}
+                    {% if user.is_staff %}
                         <li><a href="/results/">Results</a></li>
                         <li><a href="/purge-session/">Purge Session</a></li>
                         <li><a href="/purge-results/">Purge Results</a></li>
@@ -25,10 +25,8 @@
             </div>
         </nav>
         <div class="container body-content">
-            
                 {% block content %}
                 {% endblock %}
-            
         </div>
     </body>
 </html>

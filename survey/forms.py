@@ -13,3 +13,16 @@ class RandomForm(forms.Form):
         for answer in Answer.objects.filter(parent=self.question_num):
             a_list.append((answer.pk, answer.text))
         self.fields['vote'] = forms.ChoiceField(widget=forms.RadioSelect, choices=a_list)
+
+
+class CustomModelChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return "%s: %s" % (obj.parent, obj.text)
+
+
+class CustomQuestionAdminForm(forms.ModelForm):
+    prereq = CustomModelChoiceField(queryset=Answer.objects.all())
+
+    class Meta:
+        model = Question
+        fields = '__all__'

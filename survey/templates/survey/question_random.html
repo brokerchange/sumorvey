@@ -1,7 +1,7 @@
 {% extends 'survey/base.html' %}
 
 {% block content %}
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
       <div class="panel-heading"><h2>{{ question.text }}</h2></div>
       <div class="panel-body">
         <form method="POST" class="form-horizontal">{% csrf_token %}

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Question, Answer
-
+from .forms import CustomQuestionAdminForm
 
 class AnswerInline(admin.TabularInline):
     model = Answer
@@ -14,7 +14,7 @@ class QuestionAdmin(admin.ModelAdmin):
             ans += " " + answer.text + ","
         return ans.strip(",")
 
-
+    form = CustomQuestionAdminForm
 
     fieldsets = [
         (None, {'fields': ['prereq', 'text']}), ('Date information', {'fields': ['created'], 'classes': ['collapse']}),
@@ -24,4 +24,6 @@ class QuestionAdmin(admin.ModelAdmin):
     list_display = ['text', 'possible_answers', 'answers']
 
 
+admin.site.site_header = 'Su(mo)urvey Admin'
+admin.site.site_title = 'Su(mo)urvey Admin'
 admin.site.register(Question, QuestionAdmin)

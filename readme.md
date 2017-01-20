@@ -40,6 +40,11 @@ Alternatively, edit db info in *survsite/settings.py*
 ```
 python manage.py migrate
 ```
+### Populate data
+
+```
+python manage.py loaddata seed
+```
 
 ### Create a superuser
 ```

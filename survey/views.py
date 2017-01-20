@@ -5,7 +5,7 @@ from .forms import RandomForm
 
 
 def question_list(request):
-    if request.user.is_authenticated:
+    if request.user.is_staff:
         questions = Question.objects.order_by('created')
         answers = Answer.objects.order_by('pk')
         return render(request, 'survey/question_list.html', {'questions': questions, 'answers': answers})
@@ -67,7 +67,7 @@ def question_random(request):
 
 
 def question_detail(request, pk):
-    if request.user.is_authenticated:
+    if request.user.is_staff:
         question = get_object_or_404(Question, pk=pk)
         answers = get_list_or_404(Answer, parent=pk)
         return render(request, 'survey/question_detail.html', {'question': question, 'answers': answers})
@@ -76,7 +76,7 @@ def question_detail(request, pk):
 
 
 def purge_session(request):
-    if request.user.is_authenticated:
+    if request.user.is_staff:
         del request.session['answered']
         del request.session['responses']
         request.session.modified = True
@@ -84,7 +84,7 @@ def purge_session(request):
 
 
 def purge_results(request):
-    if request.user.is_authenticated:
+    if request.user.is_staff:
         for answer in Answer.objects.all():
             answer.votes = 0
             answer.save()
