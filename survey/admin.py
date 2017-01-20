@@ -24,6 +24,6 @@ class QuestionAdmin(admin.ModelAdmin):
     list_display = ['text', 'possible_answers', 'answers']
 
 
-admin.site.site_header = 'Su(mo)urvey Admin'
-admin.site.site_title = 'Su(mo)urvey Admin'
+admin.site.site_header = 'Su(mo)rvey Admin'
+admin.site.site_title = 'Su(mo)rvey Admin'
 admin.site.register(Question, QuestionAdmin)
