@@ -17,7 +17,7 @@
 
             var options = {
               title: '{{ question.text }} ({{ question.answers }} responses)',
-              is3D: false,
+              is3D: true,
               sliceVisibilityThreshold:0,
             };
 
@@ -25,7 +25,7 @@
             chart.draw(data, options);
           }
         </script>
-        <div id="piechart_3d_{{ question.pk }}" style="width: 800px; height: 500px;"></div>
+        <div id="piechart_3d_{{ question.pk }}" class="chart"></div>
         </div>
     </div>
 {% endblock %}

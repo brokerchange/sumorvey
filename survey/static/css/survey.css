@@ -7,3 +7,7 @@
 ul{
      list-style:none;
 }
+.chart {
+  width: 100%; 
+  min-height: 450px;
+}
